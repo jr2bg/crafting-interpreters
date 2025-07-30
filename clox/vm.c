@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #include "common.h"
-#include "debug.c"
+#include "debug.h"
 #include "vm.h"
 
 VM vm;
@@ -46,11 +46,12 @@ static InterpretResult run() {
         switch (instruction = READ_BYTE()) {
             case OP_CONSTANT: {
                 Value constant = READ_CONSTANT();
-                printValue(constant);
-                printf("\n");
+                push(constant);
                 break;
             }
             case OP_RETURN: {
+                printValue(pop());
+                printf("\n");
                 return INTERPRET_OK;
             }
         }
