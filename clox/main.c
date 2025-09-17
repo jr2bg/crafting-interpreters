@@ -3,6 +3,7 @@
 #include "debug.h"
 #include "vm.h"
 
+// 123 is an arbitrary line number
 int main(int argc, const char* argv[]){
     initVM();
     Chunk chunk;
